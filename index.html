@@ -1,325 +1,739 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="theme-color" content="#07111f">
-	<title>EcoBrain AI | Smart Energy</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07111f">
+
+    <title>EcoBrain AI | Smart Energy</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="app">
 
-	<header class="header">
-		<div class="brand">
-			<div class="logo">◈</div>
-			<div>
-				<h1>EcoBrain <span>AI</span></h1>
-				<p>Smart Energy Intelligence</p>
-			</div>
-		</div>
+    <!-- ======================================
+         ECOBRAIN AI - INLOGSCHERM
+    ======================================= -->
 
-		<div class="header-right">
-			<span class="status">
-				<span class="status-dot"></span>
-				DEMOMODUS
-			</span>
-			<span class="notification">♧</span>
-		</div>
-	</header>
+    <div id="login-screen" class="login-screen">
 
-	<main>
+        <div class="login-card">
 
-		<!-- DASHBOARD -->
-		<section id="dashboard" class="page active">
+            <div class="login-logo">◈</div>
 
-			<div class="welcome">
-				<div>
-					<p class="eyebrow">ENERGIEOVERZICHT</p>
-					<h2>Jouw energie, slimmer beheerd.</h2>
-				</div>
-				<span class="demo-badge">● Live demo</span>
-			</div>
+            <h1>EcoBrain <span>AI</span></h1>
 
-			<!-- LIVE POWER -->
-			<section class="panel power-panel">
-				<div class="panel-heading">
-					<div>
-						<span class="eyebrow">REAL-TIME MONITORING</span>
-						<h3>⚡ Live vermogen</h3>
-					</div>
-					<span class="pill">● Actief</span>
-				</div>
+            <p class="login-subtitle">
+                Smart Energy Intelligence
+            </p>
 
-				<div class="power-gauge">
-					<svg viewBox="0 0 240 150" aria-hidden="true">
-						<path class="gauge-bg"
-							  d="M 30 125 A 90 90 0 0 1 210 125"/>
-						<path id="gauge-progress"
-							  class="gauge-progress"
-							  d="M 30 125 A 90 90 0 0 1 210 125"/>
-					</svg>
+            <h2>Welkom terug!</h2>
 
-					<div class="power-number">
-						<span class="bolt">ϟ</span>
-						<strong id="live-power">245</strong>
-						<span class="unit">W</span>
-						<small>van 2.500 W</small>
-					</div>
-				</div>
+            <p class="login-description">
+                Log in om jouw energieverbruik
+                in realtime te bekijken.
+            </p>
 
-				<div class="power-footer">
-					<div>
-						<span>Netspanning</span>
-						<strong id="voltage">230 V</strong>
-					</div>
-					<div>
-						<span>Stroomsterkte</span>
-						<strong id="current">1,07 A</strong>
-					</div>
-					<div>
-						<span>Status</span>
-						<strong class="green">Normaal</strong>
-					</div>
-				</div>
-			</section>
+            <form id="login-form">
 
-			<!-- STATISTIEKEN -->
-			<section class="stats-grid">
-				<div class="stat-card green-card">
-					<span class="stat-icon">⚡</span>
-					<span class="stat-label">VERBRUIK VANDAAG</span>
-					<strong id="today-energy">2,45 kWh</strong>
-					<small>Gemeten energie</small>
-				</div>
+                <label for="login-email">
+                    E-mailadres
+                </label>
 
-				<div class="stat-card blue-card">
-					<span class="stat-icon">€</span>
-					<span class="stat-label">KOSTEN VANDAAG</span>
-					<strong id="today-cost">€ 0,74</strong>
-					<small>Geschatte kosten</small>
-				</div>
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="jouw@email.be"
+                    autocomplete="email"
+                    required
+                >
 
-				<div class="stat-card green-card">
-					<span class="stat-icon">▥</span>
-					<span class="stat-label">TOTAAL VERBRUIK</span>
-					<strong id="total-energy">127,63 kWh</strong>
-					<small>Sinds start meting</small>
-				</div>
+                <label for="login-password">
+                    Wachtwoord
+                </label>
 
-				<div class="stat-card blue-card">
-					<span class="stat-icon">◈</span>
-					<span class="stat-label">TOTALE KOSTEN</span>
-					<strong id="total-cost">€ 38,29</strong>
-					<small>Geschatte kosten</small>
-				</div>
-			</section>
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Voer je wachtwoord in"
+                    autocomplete="current-password"
+                    required
+                >
 
-			<!-- GRAFIEK -->
-			<section class="panel chart-panel">
-				<div class="panel-heading chart-heading">
-					<div>
-						<span class="eyebrow">ENERGY ANALYTICS</span>
-						<h3>📈 Energieverbruik</h3>
-					</div>
+                <button type="submit" id="login-button">
+                    Inloggen →
+                </button>
 
-					<div class="chart-buttons">
-						<button class="period active" data-period="day">Dag</button>
-						<button class="period" data-period="week">Week</button>
-						<button class="period" data-period="month">Maand</button>
-					</div>
-				</div>
+            </form>
 
-				<div class="chart-container">
-					<canvas id="energy-chart"></canvas>
-				</div>
-				<p class="chart-note" id="chart-note">
-					Vermogen gedurende de dag (W)
-				</p>
-			</section>
+            <p id="login-message" role="status"></p>
 
-			<!-- ECO SCORE -->
-			<section class="panel insights-panel">
-				<div class="score-section">
-					<span class="eyebrow">ENERGY EFFICIENCY</span>
-					<h3>🌱 EcoScore</h3>
+            <div class="login-footer">
+                🔒 Beveiligd met Supabase Authentication
+            </div>
 
-					<div class="score-circle">
-						<div>
-							<strong id="eco-score">87</strong>
-							<span>/100</span>
-						</div>
-					</div>
+        </div>
 
-					<p>Demonstratiescore</p>
-				</div>
+    </div>
 
-				<div class="ai-section">
-					<span class="eyebrow">SMART INSIGHTS</span>
-					<h3>✦ AI-inzichten</h3>
 
-					<div class="insight">
-						<span>✓</span>
-						<p>12% lager verbruik dan vorige week.</p>
-					</div>
+    <!-- ======================================
+         ECOBRAIN AI - DASHBOARD
+    ======================================= -->
 
-					<div class="insight">
-						<span>✓</span>
-						<p>Geen opvallende afwijkingen gedetecteerd.</p>
-					</div>
+    <div class="app" id="ecobrain-app" hidden>
 
-					<div class="insight">
-						<span>↗</span>
-						<p>Potentiële besparing: € 5,20 per maand.</p>
-					</div>
+        <!-- HEADER -->
 
-					<small class="disclaimer">
-						Voorbeeldinzichten, nog niet gebaseerd op echte metingen.
-					</small>
-				</div>
-			</section>
+        <header class="header">
 
-		</section>
+            <div class="brand">
 
-		<!-- STATISTIEKENPAGINA -->
-		<section id="statistics" class="page">
-			<p class="eyebrow">ANALYTICS</p>
-			<h2>Statistieken</h2>
+                <div class="logo">◈</div>
 
-			<div class="panel secondary-panel">
-				<h3>📊 Energieanalyse</h3>
-				<p>Bekijk hoe je elektriciteitsverbruik evolueert.</p>
+                <div>
+                    <h1>EcoBrain <span>AI</span></h1>
+                    <p>Smart Energy Intelligence</p>
+                </div>
 
-				<div class="mini-stat">
-					<span>Verbruik vandaag</span>
-					<strong id="stats-today">2,45 kWh</strong>
-				</div>
+            </div>
 
-				<div class="mini-stat">
-					<span>Geschatte kosten</span>
-					<strong id="stats-cost">€ 0,74</strong>
-				</div>
+            <div class="header-right">
 
-				<div class="mini-stat">
-					<span>Gemiddeld vermogen (demo)</span>
-					<strong>185 W</strong>
-				</div>
-			</div>
-		</section>
+                <span class="status">
+                    <span class="status-dot"></span>
+                    <span id="connection-status">VERBINDEN...</span>
+                </span>
 
-		<!-- TOESTELLEN -->
-		<section id="devices" class="page">
-			<p class="eyebrow">CONNECTED DEVICES</p>
-			<h2>Mijn toestellen</h2>
+                <button
+                    id="logout-button"
+                    type="button"
+                    title="Uitloggen"
+                    aria-label="Uitloggen"
+                >
+                    Uitloggen
+                </button>
 
-			<div class="panel device-card">
-				<div class="device-icon">⚡</div>
-				<div>
-					<h3>Shelly Plug S Gen3</h3>
-					<p>Energiemeter 1</p>
-					<span class="demo-label">Nog niet verbonden</span>
-				</div>
-			</div>
+            </div>
 
-			<div class="panel secondary-panel">
-				<h3>➕ Meer toestellen</h3>
-				<p>
-					Later kun je meerdere slimme stekkers toevoegen
-					en hun verbruik afzonderlijk analyseren.
-				</p>
-			</div>
-		</section>
+        </header>
 
-		<!-- BESPARING -->
-		<section id="savings" class="page">
-			<p class="eyebrow">SMART SAVINGS</p>
-			<h2>Energie besparen</h2>
 
-			<div class="panel secondary-panel">
-				<h3>🌱 Jouw EcoScore</h3>
-				<div class="large-score">87/100</div>
-				<p>
-					Dit is voorlopig een voorbeeldscore.
-					Later ontwikkelen we hiervoor een eigen algoritme.
-				</p>
-			</div>
+        <!-- ======================================
+             HOOFDINHOUD
+        ======================================= -->
 
-			<div class="panel secondary-panel">
-				<h3>🧠 Energy Detective</h3>
-				<p>
-					Binnenkort onderzoekt EcoBrain afwijkingen,
-					sluipverbruik en mogelijke besparingen.
-				</p>
-			</div>
-		</section>
+        <main>
 
-		<!-- INSTELLINGEN -->
-		<section id="settings" class="page">
-			<p class="eyebrow">PREFERENCES</p>
-			<h2>Instellingen</h2>
+            <!-- DASHBOARD -->
 
-			<div class="panel secondary-panel">
-				<h3>⚙️ Elektriciteitstarief</h3>
-				<label for="price-input">Prijs per kWh (€)</label>
+            <section id="dashboard" class="page active">
 
-				<input
-					type="number"
-					id="price-input"
-					value="0.30"
-					min="0"
-					step="0.01"
-				>
+                <div class="welcome">
 
-				<button id="save-settings" class="save-button">
-					Instellingen opslaan
-				</button>
+                    <div>
+                        <p class="eyebrow">
+                            ENERGIEOVERZICHT
+                        </p>
 
-				<p id="settings-message"></p>
-			</div>
+                        <h2>
+                            Jouw energie, slimmer beheerd.
+                        </h2>
+                    </div>
 
-			<div class="panel secondary-panel">
-				<h3>ℹ️ EcoBrain AI</h3>
-				<p>Versie 1.0 – Prototype</p>
-				<p>Ontwikkeld voor energieonderzoek.</p>
-				<p class="green">Demomodus actief</p>
-			</div>
-		</section>
+                    <span class="demo-badge" id="live-badge">
+                        ● Verbinden...
+                    </span>
 
-	</main>
+                </div>
 
-	<!-- NAVIGATIE -->
-	<nav class="bottom-nav">
-		<button class="nav-item active" data-page="dashboard">
-			<span>⌂</span>
-			<small>Home</small>
-		</button>
 
-		<button class="nav-item" data-page="statistics">
-			<span>▥</span>
-			<small>Stats</small>
-		</button>
+                <!-- LIVE VERMOGEN -->
 
-		<button class="nav-item" data-page="devices">
-			<span>♧</span>
-			<small>Toestellen</small>
-		</button>
+                <section class="panel power-panel">
 
-		<button class="nav-item" data-page="savings">
-			<span>♻</span>
-			<small>Besparing</small>
-		</button>
+                    <div class="panel-heading">
 
-		<button class="nav-item" data-page="settings">
-			<span>⚙</span>
-			<small>Instellingen</small>
-		</button>
-	</nav>
+                        <div>
+                            <span class="eyebrow">
+                                REAL-TIME MONITORING
+                            </span>
 
-</div>
+                            <h3>⚡ Live vermogen</h3>
+                        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
+                        <span class="pill" id="power-status">
+                            ● Wachten
+                        </span>
+
+                    </div>
+
+
+                    <div class="power-gauge">
+
+                        <svg
+                            viewBox="0 0 240 150"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                class="gauge-bg"
+                                d="M 30 125 A 90 90 0 0 1 210 125"
+                            />
+
+                            <path
+                                id="gauge-progress"
+                                class="gauge-progress"
+                                d="M 30 125 A 90 90 0 0 1 210 125"
+                            />
+
+                        </svg>
+
+
+                        <div class="power-number">
+
+                            <span class="bolt">ϟ</span>
+
+                            <strong id="live-power">0</strong>
+
+                            <span class="unit">W</span>
+
+                            <small>van 2.500 W</small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="power-footer">
+
+                        <div>
+                            <span>Netspanning</span>
+                            <strong id="voltage">-- V</strong>
+                        </div>
+
+                        <div>
+                            <span>Stroomsterkte</span>
+                            <strong id="current">-- A</strong>
+                        </div>
+
+                        <div>
+                            <span>Status</span>
+                            <strong class="green" id="device-status">
+                                Wachten
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- STATISTIEKEN -->
+
+                <section class="stats-grid">
+
+                    <div class="stat-card green-card">
+
+                        <span class="stat-icon">⚡</span>
+
+                        <span class="stat-label">
+                            VERBRUIK VANDAAG
+                        </span>
+
+                        <strong id="today-energy">
+                            -- kWh
+                        </strong>
+
+                        <small>Gemeten energie</small>
+
+                    </div>
+
+
+                    <div class="stat-card blue-card">
+
+                        <span class="stat-icon">€</span>
+
+                        <span class="stat-label">
+                            KOSTEN VANDAAG
+                        </span>
+
+                        <strong id="today-cost">
+                            € --
+                        </strong>
+
+                        <small>Geschatte kosten</small>
+
+                    </div>
+
+
+                    <div class="stat-card green-card">
+
+                        <span class="stat-icon">▥</span>
+
+                        <span class="stat-label">
+                            TOTAAL VERBRUIK
+                        </span>
+
+                        <strong id="total-energy">
+                            -- kWh
+                        </strong>
+
+                        <small>Sinds start meting</small>
+
+                    </div>
+
+
+                    <div class="stat-card blue-card">
+
+                        <span class="stat-icon">◈</span>
+
+                        <span class="stat-label">
+                            TOTALE KOSTEN
+                        </span>
+
+                        <strong id="total-cost">
+                            € --
+                        </strong>
+
+                        <small>Geschatte kosten</small>
+
+                    </div>
+
+                </section>
+
+
+                <!-- GRAFIEK -->
+
+                <section class="panel chart-panel">
+
+                    <div class="panel-heading chart-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                ENERGY ANALYTICS
+                            </span>
+
+                            <h3>📈 Energieverbruik</h3>
+
+                        </div>
+
+
+                        <div class="chart-buttons">
+
+                            <button
+                                class="period active"
+                                data-period="day"
+                            >
+                                Dag
+                            </button>
+
+                            <button
+                                class="period"
+                                data-period="week"
+                            >
+                                Week
+                            </button>
+
+                            <button
+                                class="period"
+                                data-period="month"
+                            >
+                                Maand
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-container">
+
+                        <canvas id="energy-chart"></canvas>
+
+                    </div>
+
+                    <p class="chart-note" id="chart-note">
+                        Wachten op energiemetingen...
+                    </p>
+
+                </section>
+
+
+                <!-- ECO SCORE -->
+
+                <section class="panel insights-panel">
+
+                    <div class="score-section">
+
+                        <span class="eyebrow">
+                            ENERGY EFFICIENCY
+                        </span>
+
+                        <h3>🌱 EcoScore</h3>
+
+                        <div class="score-circle">
+
+                            <div>
+                                <strong id="eco-score">87</strong>
+                                <span>/100</span>
+                            </div>
+
+                        </div>
+
+                        <p>Demonstratiescore</p>
+
+                    </div>
+
+
+                    <div class="ai-section">
+
+                        <span class="eyebrow">
+                            SMART INSIGHTS
+                        </span>
+
+                        <h3>✦ AI-inzichten</h3>
+
+
+                        <div class="insight">
+
+                            <span>✓</span>
+
+                            <p>
+                                12% lager verbruik dan vorige week.
+                            </p>
+
+                        </div>
+
+
+                        <div class="insight">
+
+                            <span>✓</span>
+
+                            <p>
+                                Geen opvallende afwijkingen gedetecteerd.
+                            </p>
+
+                        </div>
+
+
+                        <div class="insight">
+
+                            <span>↗</span>
+
+                            <p>
+                                Potentiële besparing:
+                                € 5,20 per maand.
+                            </p>
+
+                        </div>
+
+
+                        <small class="disclaimer">
+                            Voorbeeldinzichten, nog niet gebaseerd
+                            op echte metingen.
+                        </small>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- ======================================
+                 STATISTIEKENPAGINA
+            ======================================= -->
+
+            <section id="statistics" class="page">
+
+                <p class="eyebrow">ANALYTICS</p>
+
+                <h2>Statistieken</h2>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>📊 Energieanalyse</h3>
+
+                    <p>
+                        Bekijk hoe je elektriciteitsverbruik evolueert.
+                    </p>
+
+
+                    <div class="mini-stat">
+
+                        <span>Verbruik vandaag</span>
+
+                        <strong id="stats-today">
+                            -- kWh
+                        </strong>
+
+                    </div>
+
+
+                    <div class="mini-stat">
+
+                        <span>Geschatte kosten</span>
+
+                        <strong id="stats-cost">
+                            € --
+                        </strong>
+
+                    </div>
+
+
+                    <div class="mini-stat">
+
+                        <span>Gemiddeld vermogen (laatste 30 minuten)</span>
+
+<strong id="stats-average-power">-- W</strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+                 TOESTELLEN
+            ======================================= -->
+
+            <section id="devices" class="page">
+
+                <p class="eyebrow">
+                    CONNECTED DEVICES
+                </p>
+
+                <h2>Mijn toestellen</h2>
+
+
+                <div class="panel device-card">
+
+                    <div class="device-icon">⚡</div>
+
+                    <div>
+
+                        <h3>Shelly Plug M Gen3</h3>
+
+                        <p>Energiemeter 1</p>
+
+                        <span
+                            class="demo-label"
+                            id="shelly-connection"
+                        >
+                            Verbinding controleren...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>➕ Meer toestellen</h3>
+
+                    <p>
+                        Later kun je meerdere slimme stekkers
+                        toevoegen en hun verbruik afzonderlijk
+                        analyseren.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+                 BESPARING
+            ======================================= -->
+
+            <section id="savings" class="page">
+
+                <p class="eyebrow">
+                    SMART SAVINGS
+                </p>
+
+                <h2>Energie besparen</h2>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>🌱 Jouw EcoScore</h3>
+
+                    <div class="large-score">
+                        87/100
+                    </div>
+
+                    <p>
+                        Dit is voorlopig een voorbeeldscore.
+                        Later ontwikkelen we hiervoor
+                        een eigen algoritme.
+                    </p>
+
+                </div>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>🧠 Energy Detective</h3>
+
+                    <p>
+                        Binnenkort onderzoekt EcoBrain
+                        afwijkingen, sluipverbruik
+                        en mogelijke besparingen.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ======================================
+                 INSTELLINGEN
+            ======================================= -->
+
+            <section id="settings" class="page">
+
+                <p class="eyebrow">
+                    PREFERENCES
+                </p>
+
+                <h2>Instellingen</h2>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>⚙️ Elektriciteitstarief</h3>
+
+                    <label for="price-input">
+                        Prijs per kWh (€)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price-input"
+                        value="0.30"
+                        min="0"
+                        step="0.01"
+                    >
+
+                    <button
+                        id="save-settings"
+                        class="save-button"
+                    >
+                        Instellingen opslaan
+                    </button>
+
+                    <p id="settings-message"></p>
+
+                </div>
+
+
+                <div class="panel secondary-panel">
+
+                    <h3>ℹ️ EcoBrain AI</h3>
+
+                    <p>Versie 1.0 – Prototype</p>
+
+                    <p>Ontwikkeld voor energieonderzoek.</p>
+
+                    <p class="green" id="app-mode">
+                        Verbinding voorbereiden...
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ======================================
+             NAVIGATIE
+        ======================================= -->
+
+        <nav class="bottom-nav">
+
+            <button
+                class="nav-item active"
+                data-page="dashboard"
+            >
+
+                <span>⌂</span>
+
+                <small>Home</small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="statistics"
+            >
+
+                <span>▥</span>
+
+                <small>Stats</small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="devices"
+            >
+
+                <span>♧</span>
+
+                <small>Toestellen</small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="savings"
+            >
+
+                <span>♻</span>
+
+                <small>Besparing</small>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="settings"
+            >
+
+                <span>⚙</span>
+
+                <small>Instellingen</small>
+
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <!-- ======================================
+         JAVASCRIPT
+    ======================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
