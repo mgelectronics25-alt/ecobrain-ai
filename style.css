@@ -725,3 +725,170 @@ input {
 		font-size: 9px;
 	}
 }
+/* ======================================
+   ECOBRAIN AI - INLOGSCHERM
+====================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+.login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(39, 245, 139, 0.12),
+            transparent 45%
+        ),
+        #07111f;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 42px 35px;
+    background: #0d1b2d;
+    border: 1px solid rgba(39, 245, 139, 0.25);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+.login-logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(39, 245, 139, 0.12);
+    color: #27f58b;
+    font-size: 42px;
+}
+
+.login-card h1 {
+    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.login-card h1 span {
+    color: #27f58b;
+}
+
+.login-subtitle {
+    color: #91a4b9;
+    font-size: 13px;
+    margin-bottom: 35px;
+}
+
+.login-card h2 {
+    color: #ffffff;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login-description {
+    color: #91a4b9;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 12px;
+}
+
+#login-form label {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #26394e;
+    background: #07111f;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+#login-form input:focus {
+    border-color: #27f58b;
+    box-shadow: 0 0 0 3px rgba(39, 245, 139, 0.1);
+}
+
+#login-button {
+    margin-top: 15px;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #27f58b;
+    color: #07111f;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#login-button:hover {
+    background: #64ffad;
+    transform: translateY(-2px);
+}
+
+#login-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+#login-message {
+    margin-top: 15px;
+    color: #ff6b6b;
+    font-size: 13px;
+    min-height: 20px;
+}
+
+.login-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #26394e;
+    color: #91a4b9;
+    font-size: 12px;
+}
+
+#logout-button {
+    padding: 10px 16px;
+    border: 1px solid rgba(39, 245, 139, 0.3);
+    border-radius: 10px;
+    background: rgba(39, 245, 139, 0.08);
+    color: #27f58b;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background: rgba(39, 245, 139, 0.18);
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 35px 22px;
+    }
+
+    .login-card h1 {
+        font-size: 28px;
+    }
+}
